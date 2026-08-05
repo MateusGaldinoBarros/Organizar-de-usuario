@@ -37,7 +37,7 @@ public class Usuario {
         this.whatsapp = whatsapp;
     }
 
-    public void avancarRoleta() {
+    public void avancarMaturacao() {
         switch (whatsapp) {
             case WPPB -> whatsapp = Whatsapp.WPP1;
             case WPP1 -> whatsapp = Whatsapp.WPP2;

@@ -5,13 +5,13 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.List;
 
-import com.organizador.demo.usuario.controller.RoletaController;
-import com.organizador.demo.usuario.controller.dto.EntrarRoletaRequest;
+import com.organizador.demo.usuario.controller.MaturacaoController;
+import com.organizador.demo.usuario.controller.dto.EntrarMaturacaoRequest;
 import com.organizador.demo.usuario.controller.dto.UsuarioResponse;
 import com.organizador.demo.usuario.entidade.TipoUsuario;
 import com.organizador.demo.usuario.entidade.Usuario;
 import com.organizador.demo.usuario.entidade.Whatsapp;
-import com.organizador.demo.usuario.exception.RoletaNaoIniciadaException;
+import com.organizador.demo.usuario.exception.MaturacaoNaoIniciadaException;
 import com.organizador.demo.usuario.exception.UsuarioNaoEncontradoException;
 import com.organizador.demo.usuario.repository.UsuarioRepository;
 import com.organizador.demo.usuario.service.UsuarioService;
@@ -31,7 +31,7 @@ class UsuarioServiceIntegrationTest {
     private UsuarioRepository usuarioRepository;
 
     @Autowired
-    private RoletaController roletaController;
+    private MaturacaoController maturacaoController;
 
     @AfterEach
     void limparBanco() {
@@ -53,35 +53,35 @@ class UsuarioServiceIntegrationTest {
     }
 
     @Test
-    void sessaoSoPermiteAvancarARoletaDoUsuarioQueEntrou() {
+    void sessaoSoPermiteAvancarAMaturacaoDoUsuarioQueEntrou() {
         MockHttpSession sessaoAna = new MockHttpSession();
         MockHttpSession sessaoBia = new MockHttpSession();
-        UsuarioResponse ana = roletaController.entrar(new EntrarRoletaRequest("Ana"), sessaoAna);
-        UsuarioResponse bia = roletaController.entrar(new EntrarRoletaRequest("Bia"), sessaoBia);
+        UsuarioResponse ana = maturacaoController.entrar(new EntrarMaturacaoRequest("Ana"), sessaoAna);
+        UsuarioResponse bia = maturacaoController.entrar(new EntrarMaturacaoRequest("Bia"), sessaoBia);
 
-        roletaController.avancar(sessaoAna);
+        maturacaoController.avancar(sessaoAna);
 
-        assertEquals(Whatsapp.WPP1, roletaController.consultar(sessaoAna).whatsapp());
-        assertEquals(bia.id(), roletaController.consultar(sessaoBia).id());
-        assertEquals(Whatsapp.WPPB, roletaController.consultar(sessaoBia).whatsapp());
-        assertEquals(ana.id(), roletaController.consultar(sessaoAna).id());
+        assertEquals(Whatsapp.WPP1, maturacaoController.consultar(sessaoAna).whatsapp());
+        assertEquals(bia.id(), maturacaoController.consultar(sessaoBia).id());
+        assertEquals(Whatsapp.WPPB, maturacaoController.consultar(sessaoBia).whatsapp());
+        assertEquals(ana.id(), maturacaoController.consultar(sessaoAna).id());
     }
 
     @Test
-    void naoAvancaSemEntrarNaRoleta() {
-        assertThrows(RoletaNaoIniciadaException.class, () -> roletaController.avancar(new MockHttpSession()));
+    void naoAvancaSemEntrarNaMaturacao() {
+        assertThrows(MaturacaoNaoIniciadaException.class, () -> maturacaoController.avancar(new MockHttpSession()));
     }
 
     @Test
-    void listaTodasAsRoletasSemPermitirAlteraLas() {
-        roletaController.entrar(new EntrarRoletaRequest("Ana"), new MockHttpSession());
-        roletaController.entrar(new EntrarRoletaRequest("Bia"), new MockHttpSession());
+    void listaTodasAsMaturacoesSemPermitirAlteraLas() {
+        maturacaoController.entrar(new EntrarMaturacaoRequest("Ana"), new MockHttpSession());
+        maturacaoController.entrar(new EntrarMaturacaoRequest("Bia"), new MockHttpSession());
 
-        List<UsuarioResponse> roletas = roletaController.listarTodas();
+        List<UsuarioResponse> maturacoes = maturacaoController.listarTodas();
 
-        assertEquals(2, roletas.size());
-        assertEquals(Whatsapp.WPPB, roletas.getFirst().whatsapp());
-        assertEquals(Whatsapp.WPPB, roletas.getLast().whatsapp());
+        assertEquals(2, maturacoes.size());
+        assertEquals(Whatsapp.WPPB, maturacoes.getFirst().whatsapp());
+        assertEquals(Whatsapp.WPPB, maturacoes.getLast().whatsapp());
     }
 
     @Test

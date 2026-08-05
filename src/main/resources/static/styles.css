@@ -22,7 +22,7 @@ h2 { margin-bottom: 16px; }
 .subtitulo { max-width: 620px; color: #546079; line-height: 1.5; }
 .rotulo { margin-bottom: 6px; color: #606ee8; font-size: .78rem; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; }
 
-.painel, .todas-roletas {
+.painel, .todas-maturacoes {
     margin-bottom: 24px;
     padding: 24px;
     background: #fff;
@@ -57,14 +57,14 @@ button.secundario { color: #33415c; background: #e8ecf5; }
 
 .mensagem { min-height: 1.25rem; margin: 12px 0 0; color: #b42318; }
 .mensagem.sucesso { color: #047857; }
-.minha-roleta { display: flex; align-items: center; gap: 20px; }
-.minha-roleta > :first-child { flex: 1; }
+.minha-maturacao { display: flex; align-items: center; gap: 20px; }
+.minha-maturacao > :first-child { flex: 1; }
 .estado { display: grid; gap: 4px; text-align: center; }
 .estado span { color: #63708a; font-size: .9rem; }
 .estado strong { color: #3948be; font-size: 1.35rem; }
 
 .cabecalho-lista { display: flex; align-items: start; justify-content: space-between; gap: 12px; }
-.lista-roletas { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px; }
+.lista-maturacoes { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px; }
 .cartao {
     padding: 18px;
     border: 1px solid #dfe5f0;
@@ -79,6 +79,6 @@ button.secundario { color: #33415c; background: #e8ecf5; }
 
 @media (max-width: 620px) {
     .pagina { padding: 32px 0; }
-    .linha-formulario, .minha-roleta { align-items: stretch; flex-direction: column; }
+    .linha-formulario, .minha-maturacao { align-items: stretch; flex-direction: column; }
     .estado { text-align: left; }
 }

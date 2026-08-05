@@ -16,9 +16,9 @@ public class ApiExceptionHandler {
         return Map.of("erro", exception.getMessage());
     }
 
-    @ExceptionHandler(RoletaNaoIniciadaException.class)
+    @ExceptionHandler(MaturacaoNaoIniciadaException.class)
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
-    public Map<String, String> roletaNaoIniciada(RoletaNaoIniciadaException exception) {
+    public Map<String, String> maturacaoNaoIniciada(MaturacaoNaoIniciadaException exception) {
         return Map.of("erro", exception.getMessage());
     }
 

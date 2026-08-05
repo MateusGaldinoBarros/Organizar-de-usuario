@@ -1,4 +1,4 @@
 package com.organizador.demo.usuario.controller.dto;
 
-public record EntrarRoletaRequest(String nome) {
+public record EntrarMaturacaoRequest(String nome) {
 }

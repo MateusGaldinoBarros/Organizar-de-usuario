@@ -45,7 +45,7 @@ public class UsuarioService {
     public Usuario avancar(Long id) {
         Usuario usuario = usuarioRepository.findById(id)
                 .orElseThrow(() -> new UsuarioNaoEncontradoException(id));
-        usuario.avancarRoleta();
+        usuario.avancarMaturacao();
         return usuario;
     }
 }

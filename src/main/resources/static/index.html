@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roleta de WhatsApp</title>
+    <title>Maturação de WhatsApp</title>
     <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
     <main class="pagina">
         <header>
             <p class="rotulo">Organizador</p>
-            <h1>Roleta de WhatsApp</h1>
-            <p class="subtitulo">Entre com seu nome para acompanhar e avançar apenas a sua roleta.</p>
+            <h1>Maturação de WhatsApp</h1>
+            <p class="subtitulo">Entre com seu nome para acompanhar e avançar apenas a sua maturação.</p>
         </header>
 
         <section class="painel entrada" aria-labelledby="titulo-entrada">
-            <h2 id="titulo-entrada">Entrar na roleta</h2>
+            <h2 id="titulo-entrada">Entrar na maturação</h2>
             <form id="form-entrar">
                 <label for="nome">Seu nome</label>
                 <div class="linha-formulario">
@@ -26,27 +26,27 @@
             <p id="mensagem" class="mensagem" role="status"></p>
         </section>
 
-        <section id="minha-roleta" class="painel minha-roleta" hidden aria-labelledby="titulo-minha-roleta">
+        <section id="minha-maturacao" class="painel minha-maturacao" hidden aria-labelledby="titulo-minha-maturacao">
             <div>
-                <p class="rotulo">Sua roleta</p>
-                <h2 id="titulo-minha-roleta"></h2>
+                <p class="rotulo">Sua maturação</p>
+                <h2 id="titulo-minha-maturacao"></h2>
             </div>
             <div class="estado">
                 <span id="meu-tipo"></span>
                 <strong id="meu-whatsapp"></strong>
             </div>
-            <button id="botao-avancar" type="button">Avançar minha roleta</button>
+            <button id="botao-avancar" type="button">Avançar minha maturação</button>
         </section>
 
-        <section class="todas-roletas" aria-labelledby="titulo-todas">
+        <section class="todas-maturacoes" aria-labelledby="titulo-todas">
             <div class="cabecalho-lista">
                 <div>
                     <p class="rotulo">Acompanhamento</p>
-                    <h2 id="titulo-todas">Todas as roletas</h2>
+                    <h2 id="titulo-todas">Todas as maturações</h2>
                 </div>
                 <button id="botao-atualizar" class="secundario" type="button">Atualizar</button>
             </div>
-            <div id="lista-roletas" class="lista-roletas" aria-live="polite"></div>
+            <div id="lista-maturacoes" class="lista-maturacoes" aria-live="polite"></div>
         </section>
     </main>
     <script src="/app.js"></script>

@@ -13,14 +13,14 @@ class UsuarioRotacaoTest {
     void avancaWhatsappEAposWpp2AvancaTipoUsuario() {
         Usuario usuario = new Usuario("Ana", TipoUsuario.PROP, Whatsapp.WPPB);
 
-        usuario.avancarRoleta();
+        usuario.avancarMaturacao();
         assertEquals(Whatsapp.WPP1, usuario.getWhatsapp());
         assertEquals(TipoUsuario.PROP, usuario.getUsuario());
 
-        usuario.avancarRoleta();
+        usuario.avancarMaturacao();
         assertEquals(Whatsapp.WPP2, usuario.getWhatsapp());
 
-        usuario.avancarRoleta();
+        usuario.avancarMaturacao();
         assertEquals(Whatsapp.WPPB, usuario.getWhatsapp());
         assertEquals(TipoUsuario.USER2, usuario.getUsuario());
     }
@@ -29,7 +29,7 @@ class UsuarioRotacaoTest {
     void reiniciaAposUltimoTipoUsuario() {
         Usuario usuario = new Usuario("Ana", TipoUsuario.VISITANTE, Whatsapp.WPP2);
 
-        usuario.avancarRoleta();
+        usuario.avancarMaturacao();
 
         assertEquals(TipoUsuario.PROP, usuario.getUsuario());
         assertEquals(Whatsapp.WPPB, usuario.getWhatsapp());
