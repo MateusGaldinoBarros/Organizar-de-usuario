@@ -22,11 +22,11 @@ public class Usuario {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private TipoUsuario usuario;
+    private TipoUsuario usuario = TipoUsuario.PROP;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private Whatsapp whatsapp;
+    private Whatsapp whatsapp = Whatsapp.WPPB;
 
     protected Usuario() {
     }

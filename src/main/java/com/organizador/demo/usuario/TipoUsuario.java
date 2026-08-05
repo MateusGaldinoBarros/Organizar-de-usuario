@@ -5,5 +5,6 @@ public enum TipoUsuario {
     USER2,
     USER3,
     USER4,
-    VISITANTE
+    VISITANTE;
+
 }
