@@ -10,6 +10,7 @@ const botaoAtualizar = document.querySelector('#botao-atualizar');
 const listaMaturacoes = document.querySelector('#lista-maturacoes');
 
 let usuarioAtual = null;
+let atualizacaoEmAndamento = false;
 
 async function requisicao(url, options = {}) {
     const resposta = await fetch(url, options);
@@ -41,8 +42,14 @@ function escaparHtml(texto) {
 }
 
 async function carregarMaturacoes() {
+    if (atualizacaoEmAndamento) return;
+
+    atualizacaoEmAndamento = true;
     try {
         const maturacoes = await requisicao('/maturacao/todas');
+        const minhaMaturacao = maturacoes.find((usuario) => usuario.id === usuarioAtual?.id);
+        if (minhaMaturacao) mostrarMinhaMaturacao(minhaMaturacao);
+
         if (maturacoes.length === 0) {
             listaMaturacoes.innerHTML = '<p class="vazio">Ainda não há maturações.</p>';
             return;
@@ -56,7 +63,9 @@ async function carregarMaturacoes() {
             </article>
         `).join('');
     } catch (erro) {
-        listaMaturacoes.innerHTML = `<p class="vazio">${escaparHtml(erro.message)}</p>`;
+        mostrarMensagem(`Não foi possível atualizar as maturações: ${erro.message}`);
+    } finally {
+        atualizacaoEmAndamento = false;
     }
 }
 
@@ -105,3 +114,4 @@ async function iniciar() {
 }
 
 iniciar();
+window.setInterval(carregarMaturacoes, 5000);
