@@ -1,4 +1,4 @@
-package com.organizador.demo.usuario;
+package com.organizador.demo.usuario.entidade;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -17,7 +17,7 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String nome;
 
     @Enumerated(EnumType.STRING)
@@ -37,6 +37,17 @@ public class Usuario {
         this.whatsapp = whatsapp;
     }
 
+    public void avancarRoleta() {
+        switch (whatsapp) {
+            case WPPB -> whatsapp = Whatsapp.WPP1;
+            case WPP1 -> whatsapp = Whatsapp.WPP2;
+            case WPP2 -> {
+                whatsapp = Whatsapp.WPPB;
+                usuario = usuario.proximo();
+            }
+        }
+    }
+
     public Long getId() {
         return id;
     }
@@ -45,23 +56,11 @@ public class Usuario {
         return nome;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
     public TipoUsuario getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(TipoUsuario usuario) {
-        this.usuario = usuario;
-    }
-
     public Whatsapp getWhatsapp() {
         return whatsapp;
-    }
-
-    public void setWhatsapp(Whatsapp whatsapp) {
-        this.whatsapp = whatsapp;
     }
 }

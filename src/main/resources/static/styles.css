@@ -1,0 +1,84 @@
+:root {
+    color-scheme: light;
+    font-family: Arial, sans-serif;
+    color: #172033;
+    background: #f4f7fb;
+}
+
+* { box-sizing: border-box; }
+
+body { margin: 0; }
+
+.pagina {
+    width: min(960px, calc(100% - 32px));
+    margin: 0 auto;
+    padding: 56px 0;
+}
+
+header { margin-bottom: 32px; }
+h1, h2, p { margin-top: 0; }
+h1 { margin-bottom: 8px; font-size: clamp(2rem, 6vw, 3rem); }
+h2 { margin-bottom: 16px; }
+.subtitulo { max-width: 620px; color: #546079; line-height: 1.5; }
+.rotulo { margin-bottom: 6px; color: #606ee8; font-size: .78rem; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; }
+
+.painel, .todas-roletas {
+    margin-bottom: 24px;
+    padding: 24px;
+    background: #fff;
+    border: 1px solid #dfe5f0;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(28, 39, 71, .06);
+}
+
+label { display: block; margin-bottom: 8px; font-weight: 700; }
+.linha-formulario { display: flex; gap: 12px; }
+input {
+    flex: 1;
+    min-width: 0;
+    padding: 12px 14px;
+    border: 1px solid #b9c3d6;
+    border-radius: 8px;
+    font: inherit;
+}
+button {
+    padding: 12px 16px;
+    color: #fff;
+    background: #4d5bd3;
+    border: 0;
+    border-radius: 8px;
+    cursor: pointer;
+    font: inherit;
+    font-weight: 700;
+}
+button:hover { background: #3948be; }
+button:disabled { cursor: wait; opacity: .65; }
+button.secundario { color: #33415c; background: #e8ecf5; }
+
+.mensagem { min-height: 1.25rem; margin: 12px 0 0; color: #b42318; }
+.mensagem.sucesso { color: #047857; }
+.minha-roleta { display: flex; align-items: center; gap: 20px; }
+.minha-roleta > :first-child { flex: 1; }
+.estado { display: grid; gap: 4px; text-align: center; }
+.estado span { color: #63708a; font-size: .9rem; }
+.estado strong { color: #3948be; font-size: 1.35rem; }
+
+.cabecalho-lista { display: flex; align-items: start; justify-content: space-between; gap: 12px; }
+.lista-roletas { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px; }
+.cartao {
+    padding: 18px;
+    border: 1px solid #dfe5f0;
+    border-radius: 12px;
+    background: #fafbfe;
+}
+.cartao.atual { border-color: #606ee8; background: #f0f1ff; }
+.cartao h3 { margin: 0 0 12px; }
+.cartao p { margin-bottom: 4px; color: #65718a; }
+.cartao strong { color: #3948be; }
+.vazio { grid-column: 1 / -1; color: #65718a; }
+
+@media (max-width: 620px) {
+    .pagina { padding: 32px 0; }
+    .linha-formulario, .minha-roleta { align-items: stretch; flex-direction: column; }
+    .estado { text-align: left; }
+}
